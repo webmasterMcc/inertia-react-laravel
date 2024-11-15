@@ -5,9 +5,9 @@ const Users = ({ user , users }) => {
     console.log(user)
     return (
         <>
-     
+
           <AuthenticatedLayout
-             user={users}
+             user={user}
              header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">User Management</h2>}
            >
             <div className="overflow-x-auto">
@@ -26,7 +26,7 @@ const Users = ({ user , users }) => {
                     </thead>
 
                         {users.map( user => {
-                          return (   
+                          return (
                           <tbody className="divide-y divide-gray-200 dark:divide-gray-700" key={user.id}>
                              <tr>
                                  <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
@@ -48,7 +48,7 @@ const Users = ({ user , users }) => {
                         })}
                 </table>
             </div>
-            </AuthenticatedLayout> 
+            </AuthenticatedLayout>
         </>
     )
 }

@@ -9,8 +9,8 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\guzzleSwipper;
- 
- 
+
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 
@@ -21,24 +21,22 @@ class UserController extends Controller
     public function loadUsers(){
 
           $users = \App\Models\User::all();
-          $user = auth::user();
-         
-
+          $user = auth()->user();
 
         return Inertia::render("Users/Users" , [
             'users' => $users,
-            'user' => $user,  
+            'user' => $user,
             'userCount' => count($users)
         ]);
-        
+
     }
 
 
 
-    
+
     public function welcome(){
 
-        /// model 
+        /// model
        $guzzleDATA = new guzzleSwipper();
        $fetchDataInstagram = $guzzleDATA->fetchInstagramLuxmarble() ;
 
@@ -56,6 +54,6 @@ class UserController extends Controller
 
 
 
-   
+
 
 }
