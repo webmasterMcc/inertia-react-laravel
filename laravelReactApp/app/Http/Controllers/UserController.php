@@ -107,6 +107,7 @@ class UserController extends Controller
            'name'=> $validatedData['name'],
            'email'=> $validatedData['email'],
            'password'=> Hash::make($validatedData['password']) ,
+
            ]);
 //       User::create([
 //           'name' => 'pedro',
