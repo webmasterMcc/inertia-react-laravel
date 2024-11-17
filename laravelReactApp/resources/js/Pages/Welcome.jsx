@@ -1,9 +1,10 @@
 import FetchDataLuxInstagram from '@/Components/FetchDataLuxInstagram';
 import { Head, Link } from '@inertiajs/react';
+import {Fragment} from "react";
 
 export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchDATA }) {
 
-    
+
     const handleImageError = () => {
         document
             .getElementById('screenshot-container')
@@ -37,13 +38,27 @@ export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchDATA 
                             </div>
                             <nav className="-mx-3 flex flex-1 justify-end">
                                 {auth.user ? (
-                                   
-                                    <Link
-                                        href={route('dashboard')}
-                                        className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Dashboard
-                                    </Link>
+                                    <>
+                                        <Link
+                                            href={route('dashboard')}
+                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Dashboard
+                                        </Link>
+                                        <Link
+                                            href={route('homepage')}
+                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Home Page
+                                        </Link>
+                                        <Link
+                                            href={route('swiper')}
+                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            swipper slider
+                                        </Link>
+                                    </>
+
                                 ) : (
                                     <>
                                       <Link
@@ -76,8 +91,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchDATA 
                         </header>
 
                         <main className="mt-6">
-                                     <FetchDataLuxInstagram loaderData={fetchDATA} />   
-                                      
+                                     <FetchDataLuxInstagram loaderData={fetchDATA} />
+
                         </main>
 
                         <footer className="py-16 text-center text-sm text-black dark:text-white/70">

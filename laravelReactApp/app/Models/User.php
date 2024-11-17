@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'ís_admin'
+        'is_admin'
     ];
 
     /**
@@ -39,6 +39,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+//    protected $casts = [ // Changed this from a method to a property
+//        'email_verified_at' => 'datetime',
+//        'password' => 'hashed', // Automatically hashes passwords in Laravel 10
+//    ];
     protected function casts(): array
     {
         return [

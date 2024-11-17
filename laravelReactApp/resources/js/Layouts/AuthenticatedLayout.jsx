@@ -34,6 +34,11 @@ export default function AuthenticatedLayout({ header, children }) {
                                     active={route().current('users.index')} >
                                     User Management
                                 </NavLink>
+                                <NavLink
+                                    href={route('users.create')}
+                                    active={route().current('users.create')} >
+                                    Create new user
+                                </NavLink>
                             </div>
                         </div>
 
