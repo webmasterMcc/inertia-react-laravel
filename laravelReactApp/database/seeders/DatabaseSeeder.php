@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
 //            'name' => 'Test User',
 //            'email' => 'test@example.com',
 //        ]);
-        $this->call(DefaultUsersSeeder::class);
+        $this->call([
+        CryptocurrencySeeder::class,
+        DefaultUsersSeeder::class
+    ]);
     }
 }

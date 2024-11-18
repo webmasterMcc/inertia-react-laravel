@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuzzleAndSwiperController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Cryptocurrency;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -54,5 +55,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get("swiperslide" , [GuzzleAndSwiperController::class, 'swiperDisplays'])->name('swiper');
+Route::get("/blog" , function(){
+    $crypto = new Cryptocurrency();
+    $allCryptos = Cryptocurrency::all();
+    return Inertia::render('Blog' , [
+        'allCryptos' => $allCryptos,
+        'crypto' => $crypto,
+    ]);
+})->name('blog');
+
+ Route::get("/about" , function(){
+    return Inertia::render('About');
+})->name('about');
 
 require __DIR__.'/auth.php';

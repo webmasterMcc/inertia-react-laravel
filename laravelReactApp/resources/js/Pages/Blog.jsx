@@ -1,13 +1,11 @@
 import React from 'react'
-import SlideSwiper from '@/Components/SliderSwiper' ;
 import { Head, Link } from '@inertiajs/react';
- 
 
-
-const NewProducts = ({auth ,   laravelVersion, phpVersion }) => {
-    return (
-<>
-            <Head title="new products" />
+function Blog({auth ,   laravelVersion, phpVersion ,  allCryptos}) {
+    console.log(allCryptos)
+  return (
+    <>
+     <Head title="Blog" />
             <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <div className="relative flex min-h-screen flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
@@ -82,8 +80,17 @@ const NewProducts = ({auth ,   laravelVersion, phpVersion }) => {
                         <main className="mt-6">
                         <div>
          <Head title="Welcome" />
-        <h1>Welcome to my homepage</h1>
-        <SlideSwiper />
+        <h1>Welcome to my posts page </h1>
+        {allCryptos.map(crypto => {
+            return (
+                <div key={crypto.id}>
+                    <h2>{crypto.name}</h2>
+                    <p>{crypto.symbol}</p>
+                   {/*  <img src={crypto.image} alt={crypto.name} /> */}
+                </div>
+            )
+        })}
+         
     </div>
 
                         </main>
@@ -95,7 +102,7 @@ const NewProducts = ({auth ,   laravelVersion, phpVersion }) => {
                 </div>
             </div>
         </>
-    )
+  )
 }
 
-export default NewProducts
+export default Blog

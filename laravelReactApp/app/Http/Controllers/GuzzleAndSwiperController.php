@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\guzzleSwipper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
 class GuzzleAndSwiperController extends Controller
@@ -19,7 +21,13 @@ class GuzzleAndSwiperController extends Controller
     public function swiperDisplays(){
         // $guzzleSwippers = guzzleSwipper::all();
         // return view('guzzleSwiper.index', compact('guzzleSwippers'));
-        return Inertia::render("Newproducts");
+        return Inertia::render("Newproducts" , [
+            'canLogin' => Route::has('login'),
+           'canRegister' => Route::has('register'),
+           'home' => Route::has('/'),
+           'laravelVersion' => Application::VERSION,
+           'phpVersion' => PHP_VERSION,
+        ]);
     }
 
     /**
