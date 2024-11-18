@@ -4,9 +4,10 @@ import React from "react";
 
 const createPost = ({user , users}) => {
     const {data, setData, post, processing, errors} = useForm({
-        name: '',
-        email: '',
-        password: '',
+        title: '',
+        description: '',
+        author: '',
+        image: '',
     });
 
     let handleChange  = (e) => {
@@ -18,7 +19,7 @@ const createPost = ({user , users}) => {
         e.preventDefault()
         console.dir(data)
 
-        post(route('createUser'))
+       // post(route('createUser'))
     }
 
 
@@ -29,7 +30,7 @@ const createPost = ({user , users}) => {
 
             <AuthenticatedLayout
                 user={user}
-                header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">creeate post</h2>}
+                header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">create post</h2>}
             >
                 <Head title="Users" />
                 <div className="overflow-x-auto">
@@ -42,7 +43,7 @@ const createPost = ({user , users}) => {
                                 className="mx-auto h-10 w-auto"
                             />
                             <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-                                Create new user
+                                Create new Post
                             </h2>
                         </div>
 
@@ -50,17 +51,17 @@ const createPost = ({user , users}) => {
                             <form onSubmit={submitNewCustomer} className="space-y-6">
                                 <div>
                                     <div className="flex items-center justify-between">
-                                        <label htmlFor="name" className="block text-sm/6 font-medium text-gray-900">
-                                            name
+                                        <label htmlFor="title" className="block text-sm/6 font-medium text-gray-900">
+                                            title
                                         </label>
                                     </div>
                                     <div className="mt-2">
                                         <input
                                             type='text'
-                                            name="name"
+                                            name="title"
                                             onChange={handleChange}
-                                            value={data.name}
-                                            id='name'
+                                            value={data.title}
+                                            id='title'
                                             placeholder="name"
                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                                         />
@@ -69,33 +70,50 @@ const createPost = ({user , users}) => {
 
                                 <div className='m-0'>
                                     <div className="flex items-center justify-between">
-                                        <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
-                                            email
+                                        <label htmlFor="description"
+                                               className="block text-sm/6 font-medium text-gray-900">
+                                            description
                                         </label>
                                     </div>
                                     <div className="mt-2">
                                         <input
-                                            type='email'
-                                            name="email"
+                                            type='description'
+                                            name="description"
                                             onChange={handleChange}
-                                            value={data.email}
-                                            placeholder="email"
-                                            id='email'
+                                            value={data.description}
+                                            placeholder="description"
+                                            id='description'
                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                                         />
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
-                                            password
+                                        <label htmlFor="author" className="block text-sm/6 font-medium text-gray-900">
+                                            author
                                         </label>
                                     </div>
                                     <div className="mt-2">
                                         <input
-                                            type='password'
-                                            name="password"
+                                            type='author'
+                                            name="author"
                                             onChange={handleChange}
-                                            value={data.password}
-                                            id='password'
+                                            value={data.author}
+                                            placeholder='author'
+                                            id='author'
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                                        />
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <label htmlFor="image" className="block text-sm/6 font-medium text-gray-900">
+                                            image
+                                        </label>
+                                    </div>
+                                    <div className="mt-2">
+                                        <input
+                                            type='file'
+                                            name="image"
+                                            onChange={handleChange}
+                                            value={data.image}
+                                            id='image'
                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                                         />
                                     </div>
