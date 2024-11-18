@@ -2,9 +2,9 @@ import FetchDataLuxInstagram from '@/Components/FetchDataLuxInstagram';
 import { Head, Link } from '@inertiajs/react';
 import {Fragment} from "react";
 
-export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchDATA }) {
+export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchCryptoData }) {
 
-
+    console.log(fetchCryptoData)
     const handleImageError = () => {
         document
             .getElementById('screenshot-container')
@@ -57,7 +57,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchDATA 
                                         >
                                             swipper slider
                                         </Link>
-                                       
+
                                     </>
 
                                 ) : (
@@ -98,7 +98,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion ,  fetchDATA 
                         </header>
 
                         <main className="mt-6">
-                                     <FetchDataLuxInstagram loaderData={fetchDATA} />
+                                     <FetchDataLuxInstagram loaderData={fetchCryptoData} />
 
                         </main>
 

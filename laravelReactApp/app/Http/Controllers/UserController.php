@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\CryptofetchModel;
 use \App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -71,8 +72,8 @@ class UserController extends Controller
     public function welcome(){
 
         /// model
-       $guzzleDATA = new guzzleSwipper();
-       $fetchDataInstagram = $guzzleDATA->fetchInstagramLux() ;
+       $guzzleDATA = new CryptofetchModel();
+       $fetchCryptoData= $guzzleDATA->coinGateData() ;
 
 
        return Inertia::render('Welcome', [
@@ -81,7 +82,7 @@ class UserController extends Controller
            'home' => Route::has('/'),
            'laravelVersion' => Application::VERSION,
            'phpVersion' => PHP_VERSION,
-             'fetchDATA' => $fetchDataInstagram ,
+           'fetchCryptoData' => $fetchCryptoData,
        ]);
    }
 
