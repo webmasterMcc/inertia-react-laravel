@@ -24,7 +24,7 @@ class CryptofetchModel extends Model
 
 
         $client = new \GuzzleHttp\Client();
-
+        $uri = "https://api.coingate.com/api/v2/currencies?native=true&enabled=true%27";
         $response = $client->request('GET', 'https://api.coingate.com/api/v2/currencies', [
             'headers' => [
                 'accept' => 'application/json',

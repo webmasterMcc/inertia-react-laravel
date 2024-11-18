@@ -2,22 +2,15 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuzzleAndSwiperController;
+use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\BlogPost;
 use App\Models\Cryptocurrency;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         "home" => Route::has('/'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// })->name("homepage");
 
 Route::get('/'  , [UserController::class , 'welcome'] )->name("homepage");
 
@@ -40,7 +33,8 @@ Route::post("/edit/user/{id}", [UserController::class,'loadEditForm'])->name("ed
 
 /// my routes
 Route::get("/create_new_user" , [UserController::class, 'createNewUser'])->name("users.create");
-Route::post('/createNewUser' , [UserController::class, 'createNewUserPost' ])->name('createUser') ;
+Route::post('/users/create', [UserController::class, 'createNewUserPost'])->name('createUser');
+
 
 //Route::get("/users/create", [UserController::class,'create'])->name("users.create");
 //Route::get("/users/{id}/edit", [UserController::class,'edit'])->name("users.edit");
@@ -55,12 +49,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get("swiperslide" , [GuzzleAndSwiperController::class, 'swiperDisplays'])->name('swiper');
+
+/// blog
+
+Route::get("/createPost" , [BlogPostController::class, 'ShowCreatePost'])->name('blog.createPost');
+
 Route::get("/blog" , function(){
-    $crypto = new Cryptocurrency();
-    $allCryptos = Cryptocurrency::all();
+//    $crypto = new Cryptocurrency();
+//    $allCryptos = Cryptocurrency::all();
+
+     $posts = new BlogPost() ;
+     $allPosts = $posts::all();
     return Inertia::render('Blog' , [
-        'allCryptos' => $allCryptos,
-        'crypto' => $crypto,
+        'allPost' => $allPosts,
+
     ]);
 })->name('blog');
 

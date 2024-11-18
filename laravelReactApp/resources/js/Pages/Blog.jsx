@@ -1,8 +1,8 @@
 import React from 'react'
 import { Head, Link } from '@inertiajs/react';
 
-function Blog({auth ,   laravelVersion, phpVersion ,  allCryptos}) {
-    console.log(allCryptos)
+function Blog({auth ,   laravelVersion, phpVersion ,  allPost }) {
+    console.log(allPost)
   return (
     <>
      <Head title="Blog" />
@@ -44,6 +44,12 @@ function Blog({auth ,   laravelVersion, phpVersion ,  allCryptos}) {
                                         >
                                             swipper slider
                                         </Link>
+                                        <Link
+                                            href={route('blog')}
+                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            blog
+                                        </Link>
                                     </>
 
                                 ) : (
@@ -81,16 +87,18 @@ function Blog({auth ,   laravelVersion, phpVersion ,  allCryptos}) {
                         <div>
          <Head title="Welcome" />
         <h1>Welcome to my posts page </h1>
-        {allCryptos.map(crypto => {
+        {allPost.map(post => {
             return (
-                <div key={crypto.id}>
-                    <h2>{crypto.name}</h2>
-                    <p>{crypto.symbol}</p>
+                <div key={post.id} className=" bg-purple-950 container-xl lg:container m-auto p-6 rounded-lg shadow-md my-8 ">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
+                    <h2 className="text-2xl font-bold">{post.author}</h2>
+                    <p>{post.description}</p>
                    {/*  <img src={crypto.image} alt={crypto.name} /> */}
+                    </div>
                 </div>
             )
         })}
-         
+
     </div>
 
                         </main>

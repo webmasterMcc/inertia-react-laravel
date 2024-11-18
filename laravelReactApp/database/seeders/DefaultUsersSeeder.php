@@ -10,7 +10,8 @@ class DefaultUsersSeeder extends Seeder
 {
     public function run()
     {
-        User::firstOrCreate(
+        // Create Admin User
+        User::updateOrCreate(
             ['email' => 'admin@example.com'],
             [
                 'name' => 'Admin',
@@ -19,7 +20,8 @@ class DefaultUsersSeeder extends Seeder
             ]
         );
 
-        User::firstOrCreate(
+        // Create Regular User
+        User::updateOrCreate(
             ['email' => 'jose@example.com'],
             [
                 'name' => 'Jose',

@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
 //        ]);
         $this->call([
         CryptocurrencySeeder::class,
-        DefaultUsersSeeder::class
+        DefaultUsersSeeder::class ,
+            BlogPostSeeder::class,
     ]);
     }
 }

@@ -48,7 +48,7 @@ class UserController extends Controller
 
     public function loadUsers(){
 
-          $users = \App\Models\User::all();
+        $users = \App\Models\User::all();
        $user = Auth::user();
 
         return Inertia::render("Users/Users" , [
@@ -95,12 +95,12 @@ class UserController extends Controller
    }
 
    public function createNewUserPost(Request $request){
-      // dd($request->all()) ;
+      //  dd($request->all()) ;
        // Validate the incoming request data
        $validatedData = $request->validate([
            'name' => 'required|string|max:255',
            'email' => 'required|email|unique:users,email',
-           'password' => 'required|string|min:6',
+           'password' => 'required|string|min:3',
        ]);
 
        //create a new user from the dashboard
@@ -110,11 +110,7 @@ class UserController extends Controller
            'password'=> Hash::make($validatedData['password']) ,
 
            ]);
-//       User::create([
-//           'name' => 'pedro',
-//           'email' => 'email@email.com', // Corrected closing quote
-//           'password' => Hash::make('1234') // Hash the password before storing
-//       ]);
+
        return redirect()->route('users.index')->with('success', 'User created successfully');
 
    }
