@@ -19,7 +19,7 @@ const createPost = ({user , users}) => {
         e.preventDefault()
         console.dir(data)
 
-       // post(route('createUser'))
+        post(route('blog.createNewPost'))
     }
 
 

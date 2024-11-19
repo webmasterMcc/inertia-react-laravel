@@ -1,7 +1,7 @@
 import React from 'react'
 import SlideSwiper from '@/Components/SliderSwiper' ;
 import { Head, Link } from '@inertiajs/react';
- 
+
 
 
 const NewProducts = ({auth ,   laravelVersion, phpVersion }) => {
@@ -46,6 +46,12 @@ const NewProducts = ({auth ,   laravelVersion, phpVersion }) => {
                                         >
                                             swipper slider
                                         </Link>
+                                        <Link
+                                            href={route('blog')}
+                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            blog
+                                        </Link>
                                     </>
 
                                 ) : (
@@ -61,6 +67,12 @@ const NewProducts = ({auth ,   laravelVersion, phpVersion }) => {
                                             className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
                                             swipper slider
+                                        </Link>
+                                        <Link
+                                            href={route('blog')}
+                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            blog
                                         </Link>
                                         <Link
                                             href={route('login')}

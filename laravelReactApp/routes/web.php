@@ -50,21 +50,18 @@ Route::middleware('auth')->group(function () {
 
 Route::get("swiperslide" , [GuzzleAndSwiperController::class, 'swiperDisplays'])->name('swiper');
 
-/// blog
+/// blog and post
 
-Route::get("/createPost" , [BlogPostController::class, 'ShowCreatePost'])->name('blog.createPost');
+Route::get("/createPost" , [BlogPostController::class, 'ShowPosts'])->name('blog.createPost');
+Route::post("/createNewPost" , [BlogPostController::class, 'CreateNewPosts'])->name('blog.createNewPost');
 
 Route::get("/blog" , function(){
-//    $crypto = new Cryptocurrency();
-//    $allCryptos = Cryptocurrency::all();
-
-     $posts = new BlogPost() ;
+     $posts = new BlogPost();
      $allPosts = $posts::all();
+
     return Inertia::render('Blog' , [
         'allPost' => $allPosts,
-
-    ]);
-})->name('blog');
+    ]); })->name('blog');
 
  Route::get("/about" , function(){
     return Inertia::render('About');
