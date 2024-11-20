@@ -42,7 +42,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <NavLink
                                     href={route('blog.createPost')}
                                     active={route().current('blog.createPost')} >
-                                    Create new user
+                                    Create new post
                                 </NavLink>
                             </div>
                         </div>
