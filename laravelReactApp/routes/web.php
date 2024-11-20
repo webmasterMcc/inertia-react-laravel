@@ -63,6 +63,9 @@ Route::get("/blog" , function(){
         'allPost' => $allPosts,
     ]); })->name('blog');
 
+// geting blog id  pages
+Route::get("/blog/{id}" , [BlogPostController::class , 'ShowSinglePost'])->name("Blog.SinglePost");
+
  Route::get("/about" , function(){
     return Inertia::render('About');
 })->name('about');

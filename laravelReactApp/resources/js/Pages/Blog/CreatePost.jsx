@@ -3,7 +3,8 @@ import {Head, useForm} from "@inertiajs/react";
 import React from "react";
 
 const createPost = ({user , users}) => {
-    const {data, setData, post, processing, errors} = useForm({
+
+    const {data, setData, post, processing, errors ,progress} = useForm({
         title: '',
         description: '',
         author: '',
@@ -13,7 +14,7 @@ const createPost = ({user , users}) => {
     let handleChange  = (e) => {
         // const {name,value} = e.target ;
         // setData(name,value) ;
-        setData(e.target.name, e.target.value);
+        setData(e.target.name, e.target.type ==='file' ? e.target.files[0] : e.target.value);
     }
     let submitNewCustomer = (e)  =>{
         e.preventDefault()
@@ -77,7 +78,7 @@ const createPost = ({user , users}) => {
                                     </div>
                                     <div className="mt-2">
                                         <input
-                                            type='description'
+                                            type='text'
                                             name="description"
                                             onChange={handleChange}
                                             value={data.description}
@@ -93,7 +94,7 @@ const createPost = ({user , users}) => {
                                     </div>
                                     <div className="mt-2">
                                         <input
-                                            type='author'
+                                            type='text'
                                             name="author"
                                             onChange={handleChange}
                                             value={data.author}
@@ -108,19 +109,33 @@ const createPost = ({user , users}) => {
                                         </label>
                                     </div>
                                     <div className="mt-2">
-                                        <input
-                                            type='file'
-                                            name="image"
-                                            onChange={handleChange}
-                                            value={data.image}
-                                            id='image'
-                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+
+                                        {/*<input*/}
+                                        {/*    type='file'*/}
+                                        {/*    name="image" */}
+                                        {/*    onChange={e => setData("image", e.target.files[0])}*/}
+                                        {/*    value={data.image}*/}
+                                        {/*    id='image'*/}
+                                        {/*    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"*/}
+                                        {/*/>*/}
+
+                                        <input type="file"
+                                               name="image"
+                                               id='image'
+                                               onChange={handleChange}
+                                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+
                                         />
+                                        {progress && (
+                                            <progress value={progress.percentage} max="100">
+                                                {progress.percentage}%
+                                            </progress>
+                                        )}
                                     </div>
                                 </div>
 
                                 <div>
-                                    <button type="submit" className={btnClass} disabled={processing}
+                                <button type="submit" className={btnClass} disabled={processing}
                                             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                         {processing ? 'Processing...' : 'Submit'}
                                     </button>

@@ -1,11 +1,17 @@
 import React from 'react'
-import { Head, Link } from '@inertiajs/react';
 
-function Blog({auth ,   laravelVersion, phpVersion ,  allPost }) {
-    console.log(allPost)
-  return (
-    <>
-     <Head title="Blog" />
+import {Head, Link, router} from '@inertiajs/react';
+
+function SinglePost({auth ,   laravelVersion, phpVersion , post}) {
+    console.log(post)
+
+    const handleBack = () =>  {
+      //  router.back() ;
+        window.history.back();
+    }
+    return (
+        <>
+            <Head title="Blog" />
             <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <div className="relative flex min-h-screen flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
@@ -54,7 +60,7 @@ function Blog({auth ,   laravelVersion, phpVersion ,  allPost }) {
 
                                 ) : (
                                     <>
-                                      <Link
+                                        <Link
                                             href={route('homepage')}
                                             className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
@@ -84,29 +90,29 @@ function Blog({auth ,   laravelVersion, phpVersion ,  allPost }) {
                         </header>
 
                         <main className="mt-6">
-                        <div>
-         <Head title="Welcome" />
-        <h1>Welcome to my posts page </h1>
-        {allPost.map( post => {
-            return (
-                <div key={post.id}
-                     className=" bg-purple-950 container-xl lg:container m-auto p-6 rounded-lg shadow-md my-8 ">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
-                        <h2 className="text-2xl font-bold">{post.author}</h2>
-                        <p className={'text-lg'}>{post.description}</p>
-                        {post.image &&
-                            <img className='max-w-48' src={post.image} alt={post.name}/>
-                        }
-                    </div>
-                    <a href={`/blog/${post.id}`}
-                       className='ml-8 inline-block rounded bg-cyan-900 px-4 py-2 text-xs font-medium text-white hover:bg-cyan-300  hover:text-black'>
-                        view post
-                    </a>
-                </div>
-            )
-        })}
+                            <div>
+                                <Head title="Welcome" />
+                                <h1>Welcome to post {post.id}</h1>
 
-                        </div>
+
+                                        <div key={post.id}
+                                             className=" bg-purple-950 container-xl lg:container m-auto p-6 rounded-lg shadow-md my-8 ">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
+                                                <h2 className="text-2xl font-bold">{post.author}</h2>
+                                                <p className={'text-lg'}>{post.description}</p>
+                                                {post.image &&
+                                                    <img className='max-w-48' src={`/${post.image}`} alt={post.name}/>
+                                                }
+                                            </div>
+                                            <button onClick={handleBack}
+                                               className='ml-8 inline-block rounded bg-cyan-900 px-4 py-2 text-xs font-medium text-white hover:bg-cyan-300  hover:text-black'>
+                                                Back to Post Pages
+                                            </button>
+                                        </div>
+
+
+
+                            </div>
 
                         </main>
 
@@ -117,7 +123,7 @@ function Blog({auth ,   laravelVersion, phpVersion ,  allPost }) {
                 </div>
             </div>
         </>
-  )
+    )
 }
 
-export default Blog
+export default SinglePost
