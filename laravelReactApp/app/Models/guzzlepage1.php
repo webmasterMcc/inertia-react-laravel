@@ -10,6 +10,9 @@ class guzzlepage1 extends Model
     //
     protected $fillable = ['url', 'content'];
 
+    // Igual aqui se podria delegar el consumir la api a un servicio, para mantener la logica separada
+    // Se recomienda usar algun formateador de codigo tal como https://laravel.com/docs/11.x/pint
+
     public function getData(){
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://api.github.com/users');

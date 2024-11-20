@@ -24,6 +24,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+// En este caso podrias mejor usar resource
+// Y esto va a genera todas las rutas, asi te evitas de hacerlo de forma manual
+Route::resource('users', UserController::class);
+
 //router routes
 Route::get("/users", [UserController::class,'loadUsers'])->name("users.index");
 Route::post("/edit/user", [UserController::class,'editUser'])->name("users.update");

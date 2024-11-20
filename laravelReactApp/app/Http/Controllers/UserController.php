@@ -48,6 +48,7 @@ class UserController extends Controller
 
     public function loadUsers(){
 
+        // Arriba tienes importado en model User, entonces no es necesario usar todo el namespace aqui
         $users = \App\Models\User::all();
        $user = Auth::user();
 

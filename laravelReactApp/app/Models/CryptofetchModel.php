@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CryptofetchModel extends Model
 {
-    //
+    // Aqui la logica de conectarse a la api podrias delegarse a un servicio app/services/CoinGeckoService
+    // Y aqui podrias llamar a ese servicio con CoinGeckoService::getAll() o algo parecido
 
     public function CoinGeckofetchCrypto(){
         $client = new \GuzzleHttp\Client();
