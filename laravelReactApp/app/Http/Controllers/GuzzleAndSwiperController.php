@@ -18,15 +18,16 @@ class GuzzleAndSwiperController extends Controller
         //
     }
 
-    public function swiperDisplays(){
+    public function swiperDisplays()
+    {
         // $guzzleSwippers = guzzleSwipper::all();
         // return view('guzzleSwiper.index', compact('guzzleSwippers'));
-        return Inertia::render("Newproducts" , [
+        return Inertia::render("Newproducts", [
             'canLogin' => Route::has('login'),
-           'canRegister' => Route::has('register'),
-           'home' => Route::has('/'),
-           'laravelVersion' => Application::VERSION,
-           'phpVersion' => PHP_VERSION,
+            'canRegister' => Route::has('register'),
+            'home' => Route::has('/'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
         ]);
     }
 

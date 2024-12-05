@@ -15,6 +15,7 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Buen uso de validaciones
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => [

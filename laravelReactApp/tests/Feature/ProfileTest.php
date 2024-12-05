@@ -2,11 +2,15 @@
 
 use App\Models\User;
 
-test('profile page is displayed', function () {
-    $user = User::factory()->create();
+// Se podria hacer un beforeEach
 
+beforeEach(function() {
+    $this->user = User::factory()->create();
+});
+
+test('profile page is displayed', function () {
     $response = $this
-        ->actingAs($user)
+        ->actingAs($this->user) // Y a qui usar $this->user
         ->get('/profile');
 
     $response->assertOk();
